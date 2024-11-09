@@ -61,10 +61,10 @@ public:
             if (expression[i] == '(') {
                 operators.push(expression[i]);
             }
-            else if (expression[i] == '-') {
+            else if (expression[i] == '-' || expression[i] == '+') {
                 // Kiểm tra nếu là số âm: đầu chuỗi hoặc sau dấu '('
                 if (i == 0 || expression[i - 1] == '(') {
-                    res += '-'; // Thêm dấu âm vào chuỗi
+                    if (expression[i] == '-') res += '-';
                     ++i;
                     while (i < expression.size() && isdigit(expression[i])) {
                         res += expression[i++];
