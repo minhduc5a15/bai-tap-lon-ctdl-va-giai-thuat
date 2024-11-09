@@ -38,9 +38,10 @@ public:
             cin >> item;
             if (item.get_name().length() > 0) {
                 if (is_valid_id(item.get_id())) items.push_back(item);
-                else cout << "Id da ton tai\n", --i;
+                else cout << "Id da ton tai --- Vui long nhap lai\n", --i;
             }
-            else cout << "Ten vat pham khong duoc de trong\n", --i;
+            else cout << "Ten vat pham khong duoc de trong --- Vui long nhap lai\n", --i;
+            cout << "\n";
         }
     }
 

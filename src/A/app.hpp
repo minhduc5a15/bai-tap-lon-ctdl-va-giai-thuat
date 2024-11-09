@@ -28,7 +28,7 @@ public:
         int n;
         cin >> n;
         add_item(n);
-        cout << "\nDa them " << n << " vat pham\n";
+        cout << "--- Da them " << n << " vat pham ---\n";
     }
 
     void Show() {
@@ -84,9 +84,15 @@ public:
 
     void FindPrice() {
         cout << "          -------------TIM VAT PHAM THEO GIA TIEN-------------          \n";
-        cout << "Nhap khoang gia [Min Max]: ";
-        double Min, Max;
-        cin >> Min >> Max;
+        double Min = 10, Max = 1;
+
+        int cnt = 0;
+        while (Min > Max) {
+            if (cnt == 1) cout << "Vui long nhap Min <= Max\n";
+            cout << "Nhap khoang gia [Min Max]: ";
+            cin >> Min >> Max;
+            cnt = 1;
+        }
         cout << "Cac vat pham co gia tien trong khoang [" << Min << ", " << Max << "] : \n";
         if (const bool check = find_by_price(Min, Max); !check) cout << "Khong co vat pham nao\n";
     }
