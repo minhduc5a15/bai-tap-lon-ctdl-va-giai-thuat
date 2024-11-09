@@ -4,14 +4,14 @@
 #include <iostream>
 using namespace std;
 
-inline string DelBlank_and_ToLowercase(const string &s) {
-    string ans = "";
+inline string format(const string &s) {
+    string res = "";
     for (int i = 0; i < s.length(); ++i) {
         if (s[i] == ' ') continue;
-        if (s[i] >= 'A' && s[i] <= 'Z') ans += (s[i] + 32);
-        else ans += s[i];
+        if (s[i] >= 'A' && s[i] <= 'Z') res += (s[i] + 32);
+        else res += s[i];
     }
-    return ans;
+    return res;
 }
 
 class Item {
@@ -29,7 +29,7 @@ public:
         in.ignore();
         cout << "Nhap ten vat pham : ";
         getline(in, item.name);
-        item.idName = DelBlank_and_ToLowercase(item.name);
+        item.idName = format(item.name);
 
         cout << "Nhap so luong : ";
         in >> item.amount;

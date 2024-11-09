@@ -6,106 +6,106 @@
 class App : public List_item {
 public:
     static void showMenu() {
-        cout << "-------------------------------GroceryApp-------------------------------\n";
+        cout << "-------------------------------Ứng Dụng Mua Sắm------------------------------\n";
         cout << "------------------------------------------------------------------------\n";
         cout << "=====     Menu:                                                    =====\n"
-                "=====       1. Them vat pham                                       =====\n"
-                "=====       2. Hien thi danh sach                                  =====\n"
-                "=====       3. Sap xep theo gia tien                               =====\n"
-                "=====       4. Xoa vat pham theo Id                                =====\n"
-                "=====       5. Cap nhat thong tin vat pham theo Id                 =====\n"
-                "=====       6. Tim vat pham theo khoang gia                        =====\n"
-                "=====       7. Tim vat pham theo ten                               =====\n"
-                "=====       8. Hien thi Menu                                       =====\n"
-                "=====       0. Thoat                                               =====\n";
+                "=====       1. Thêm vật phẩm                                       =====\n"
+                "=====       2. Hiển thị danh sách                                  =====\n"
+                "=====       3. Sắp xếp theo giá tiền                               =====\n"
+                "=====       4. Xóa vật phẩm theo Id                                =====\n"
+                "=====       5. Cập nhật thông tin vật phẩm theo Id                 =====\n"
+                "=====       6. Tìm vật phẩm theo khoảng giá                        =====\n"
+                "=====       7. Tìm vật phẩm theo tên                               =====\n"
+                "=====       8. Hiển thị Menu                                       =====\n"
+                "=====       0. Thoát                                               =====\n";
         cout << "------------------------------------------------------------------------\n";
         cout << "------------------------------------------------------------------------\n";
     }
 
     void Add() {
-        cout << "          -------------------THEM VAT PHAM--------------------          \n";
-        cout << "Nhap so vat pham muon them : ";
+        cout << "          -------------------THÊM VẬT PHẨM--------------------          \n";
+        cout << "Nhập số vật phẩm muốn thêm: ";
         int n;
         cin >> n;
         add_item(n);
-        cout << "--- Da them " << n << " vat pham ---\n";
+        cout << "--- Đã thêm " << n << " vật phẩm ---\n";
     }
 
     void Show() {
-        cout << "          ---------------HIEN THI DANH SACH-------------------          \n";
+        cout << "          ---------------HIỂN THỊ DANH SÁCH-------------------          \n";
         show_list_item();
     }
 
     int Sort() {
-        cout << "          -------------SAP XEP THEO GIA TIEN------------------          \n";
+        cout << "          -------------SẮP XẾP THEO GIÁ TIỀN------------------          \n";
         if (get_size() == 0) {
-            cout << "Danh sach dang trong\n";
+            cout << "Danh sách đang trống\n";
             return 0;
         }
 
         int value = 2;
         while (value < 0 || value > 1) {
-            cout << "Sap xep theo gia tang(1) hoac giam (0) : ";
+            cout << "Sắp xếp theo giá tăng (1) hoặc giảm (0): ";
             cin >> value;
         }
         if (value == 1) sort_item(true);
         else sort_item(false);
         value = 2;
         while (value < 0 || value > 1) {
-            cout << "Ban co muon hien danh sach khong (1. Co), (0. Khong) : ";
+            cout << "Bạn có muốn hiển thị danh sách không (1. Có), (0. Không): ";
             cin >> value;
         }
         return value;
     }
 
     void Delete() {
-        cout << "          --------------------XOA VAT PHAM--------------------          \n";
-        cout << "Nhap id vat pham : ";
+        cout << "          --------------------XÓA VẬT PHẨM--------------------          \n";
+        cout << "Nhập id vật phẩm: ";
         string id;
         cin >> id;
-        if (const int index = find_by_id(id); index == -1) cout << "Khong co vat pham nay\n";
+        if (const int index = find_by_id(id); index == -1) cout << "Không có vật phẩm này\n";
         else {
             delete_item(index);
-            cout << "Xoa thanh cong\n";
+            cout << "\nXóa thành công\n";
         }
     }
 
     void Update() {
-        cout << "          -----------------CAP NHAT THONG TIN-----------------          \n";
-        cout << "Nhap id vat pham : ";
+        cout << "          -----------------CẬP NHẬT THÔNG TIN-----------------          \n";
+        cout << "Nhập id vật phẩm: ";
         string id;
         cin >> id;
-        if (const int index = find_by_id(id); index == -1) cout << "Khong co vat pham nay\n";
+        if (const int index = find_by_id(id); index == -1) cout << "Không có vật phẩm này\n";
         else {
             update_item(index);
-            cout << "Cap nhat thanh cong\n";
+            cout << "Cập nhật thành công\n";
         }
     }
 
     void FindPrice() {
-        cout << "          -------------TIM VAT PHAM THEO GIA TIEN-------------          \n";
+        cout << "          -------------TÌM VẬT PHẨM THEO GIÁ TIỀN-------------          \n";
         double Min = 10, Max = 1;
 
         int cnt = 0;
         while (Min > Max) {
-            if (cnt == 1) cout << "Vui long nhap Min <= Max\n";
-            cout << "Nhap khoang gia [Min Max]: ";
+            if (cnt == 1) cout << "Vui lòng nhập Min <= Max\n";
+            cout << "Nhập khoảng giá [Min Max]: ";
             cin >> Min >> Max;
             cnt = 1;
         }
-        cout << "Cac vat pham co gia tien trong khoang [" << Min << ", " << Max << "] : \n";
-        if (const bool check = find_by_price(Min, Max); !check) cout << "Khong co vat pham nao\n";
+        cout << "Các vật phẩm có giá tiền trong khoảng [" << Min << ", " << Max << "] : \n";
+        if (const bool check = find_by_price(Min, Max); !check) cout << "Không có vật phẩm nào\n";
     }
 
     void FindItemName() {
-        cout << "          ---------------TIM VAT PHAM THEO TEN----------------          \n";
+        cout << "          ---------------TÌM VẬT PHẨM THEO TÊN----------------          \n";
         cin.ignore();
-        cout << "Nhap ten vat pham can tim : ";
+        cout << "Nhập tên vật phẩm cần tìm: ";
         string _name;
         getline(cin, _name);
 
-        _name = DelBlank_and_ToLowercase(_name);
-        if (const bool check = find_by_name(_name); !check) cout << "Khong co vat pham nao co ten nhu vay\n";
+        _name = format(_name);
+        if (const bool check = find_by_name(_name); !check) cout << "Không có vật phẩm nào có tên như vậy\n";
     }
 
 
@@ -114,13 +114,13 @@ public:
         while (true) {
             int value = -1, cnt = 0;
             while (value < 0 || value > 8) {
-                if (cnt == 1) cout << "Lenh khong hop le\n";
-                cout << "Nhap lua chon : ";
+                if (cnt == 1) cout << "Lệnh không hợp lệ\n";
+                cout << "Nhập lựa chọn: ";
                 cin >> value;
                 cnt = 1;
             }
             if (value == 0) {
-                cout << "Cam on ban da su dung";
+                cout << "Cảm ơn bạn đã sử dụng";
                 break;
             }
 
