@@ -12,7 +12,9 @@ private:
 public:
     stack() {};
 
-    ~stack() = default;
+    ~stack() {
+        clear();
+    };
 
     void clear() {
         head = nullptr;
@@ -28,20 +30,20 @@ public:
     }
 
     T top() const {
-        if (curr_size_ == 0) {
+        if (this->empty()) {
             throw std::out_of_range("The stack is empty");
         }
         return head->get_data();
     }
 
     void push(const T &x) {
-        node<T> *new_node = new node<T>(x, head);
+        node<T> *new_node = new node<T>(std::move(x), head);
         head = new_node;
         curr_size_++;
     }
 
     void pop() {
-        if (curr_size_ == 0) {
+        if (this->empty()) {
             throw std::out_of_range("The stack is empty");
         }
         const node<T> *temp = head;

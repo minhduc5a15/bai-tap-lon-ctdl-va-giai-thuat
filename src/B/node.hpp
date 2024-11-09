@@ -8,7 +8,7 @@ private:
     node<T> *next;
 
 public:
-    explicit node(const T &_data, node<T> *_next = nullptr): data(_data), next(_next) {}
+    explicit node(const T &_data, node<T> *_next = nullptr): data(std::move(_data)), next(std::move(_next)) {}
 
     node<T> *get_next() const {
         return next;
