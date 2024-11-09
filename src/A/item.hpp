@@ -23,30 +23,30 @@ private:
 
 public:
     friend istream &operator>>(istream &in, Item &item) {
-        cout << "Nhap id vat pham : ";
+        cout << "Nhập ID vật phẩm : ";
         in >> item.id;
 
         in.ignore();
-        cout << "Nhap ten vat pham : ";
+        cout << "Nhập tên vật phẩm : ";
         getline(in, item.name);
         item.idName = format(item.name);
 
-        cout << "Nhap so luong : ";
+        cout << "Nhập số lượng vật phẩm : ";
         in >> item.amount;
 
-        cout << "Nhap gia tien : ";
+        cout << "Nhập giá tiền vật phẩm : ";
         in >> item.price;
         return in;
     }
 
     friend ostream &operator<<(ostream &out, const Item &item) {
-        cout << "Id vat pham : ";
+        cout << "ID vật phẩm : ";
         out << item.id << "\n";
-        cout << "Ten vat pham : ";
+        cout << "Tên vật phẩm : ";
         out << item.name << "\n";
-        cout << "So luong : ";
+        cout << "Số lượng : ";
         out << item.amount << "\n";
-        cout << "Gia tien : ";
+        cout << "Giá tiền : ";
         out << item.price << "\n";
         return out;
     }

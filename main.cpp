@@ -22,6 +22,6 @@ void run_B() {
 }
 
 int main() {
-	run_B();
+	run_A();
  	return 0;
 }

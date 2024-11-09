@@ -16,7 +16,7 @@ public:
 
     void show_list_item() {
         if (items.empty()) {
-            cout << "Khong co vat pham nao\n";
+            cout << "Không có vật phẩm nào\n";
             return;
         }
         for (Item x: items) {
@@ -34,13 +34,13 @@ public:
     void add_item(const int n) {
         Item item;
         for (int i = 0; i < n; ++i) {
-            cout << "--- Nhap thong tin vat pham : \n";
+            cout << "--- Nhập thông tin vật phẩm : \n";
             cin >> item;
             if (item.get_name().length() > 0) {
                 if (is_valid_id(item.get_id())) items.push_back(item);
-                else cout << "Id da ton tai --- Vui long nhap lai\n", --i;
+                else cout << "Id đã tồn tại, vui lòng nhập một ID khác!\n", --i;
             }
-            else cout << "Ten vat pham khong duoc de trong --- Vui long nhap lai\n", --i;
+            else cout << "Tên vật phẩm không được để trống, vui lòng nhập lại!\n", --i;
             cout << "\n";
         }
     }
@@ -53,26 +53,26 @@ public:
     }
 
     void update_item(const int index) {
-        cout << "Neu khong muon cap nhat nhan enter voi ten, nhap -1 voi so luong va gia tien\n";
+        cout << "Nếu không muốn cập nhật, nhấn enter với tên, nhập -1 với số lượng và giá tiền\n";
         string _name;
-        cout << "Nhap ten : ";
+        cout << "Nhập tên : ";
         cin.ignore();
         getline(cin, _name);
         if (_name.length() != 0) items[index].set_name(_name);
 
         int _amount;
-        cout << "Nhap so luong : ";
+        cout << "Nhập số lượng : ";
         cin >> _amount;
         if (_amount != -1) items[index].set_amount(_amount);
 
         double _price;
-        cout << "Nhap gia tien : ";
+        cout << "Nhập giá tiền : ";
         cin >> _price;
         if (_price != -1) items[index].set_price(_price);
     }
 
     void sort_item(const bool status) {
-        cout << "Sap xep thanh cong\n";
+        cout << "Sắp xếp thành công\n";
         if (status) {
             sort(items.begin(), items.end(), [](const Item &a, const Item &b) {
                 return a < b;

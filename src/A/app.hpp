@@ -108,7 +108,6 @@ public:
         if (const bool check = find_by_name(_name); !check) cout << "Không có vật phẩm nào có tên như vậy\n";
     }
 
-
     void run() {
         showMenu();
         while (true) {
