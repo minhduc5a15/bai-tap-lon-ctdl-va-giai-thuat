@@ -63,7 +63,7 @@ public:
         const node<T> *temp = head;
         head = head->get_next();
         delete temp;
-        curr_size_--;
+        --curr_size_;
     }
 };
 

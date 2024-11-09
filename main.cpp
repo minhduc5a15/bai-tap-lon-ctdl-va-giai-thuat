@@ -7,9 +7,9 @@ void run_A() {
 }
 
 void run_B() {
-	const calc_expression expression("123+54*(17+65*(65-12))");
+	const calc_expression expression("123 + 54 * (17 + 65 * (65 - 12))");
 
-	cout << expression.calculate() << endl;
+	cout << expression.get_expression() << " = " << expression.calculate() << endl;
 }
 
 int main() {
