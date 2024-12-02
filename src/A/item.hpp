@@ -59,9 +59,9 @@ public:
     void set_amount(const int a) { amount = a; }
     void set_price(const double p) { price = p; }
 
-    string get_id() { return id; }
-    string get_id_name() { return idName; }
-    string get_name() { return name; }
+    string get_id() const { return id; }
+    string get_id_name() const { return idName; }
+    string get_name() const { return name; }
     int get_amount() const { return amount; }
     double get_price() const { return price; }
 };

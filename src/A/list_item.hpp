@@ -84,7 +84,7 @@ public:
         });
     }
 
-    int find_by_id(const string &id) {
+    int find_by_id(const string &id) const {
         for (int i = 0; i < items.size(); ++i) {
             if (items[i].get_id() == id) {
                 return i;

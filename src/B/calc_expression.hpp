@@ -4,11 +4,7 @@
 #include "stack.hpp"
 
 const unordered_map<char, int> precedence = {
-    {'+', 1},
-    {'-', 1},
-    {'*', 2},
-    {'/', 2},
-    {'(', 0}
+    {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2}, {'(', 0}
 };
 
 inline ll calc(const ll a, const ll b, const char op) {
@@ -21,7 +17,7 @@ inline ll calc(const ll a, const ll b, const char op) {
             return a * b;
         case '/':
             if (b == 0) {
-                throw std::invalid_argument("division by zero");
+                throw invalid_argument("division by zero");
             }
             return a / b;
         default:
@@ -134,7 +130,7 @@ public:
             }
             else if (is_operator(post_fix_expression[i])) {
                 if (operands.size() < 2) {
-                    throw std::runtime_error("Invalid postfix expression: not enough operands");
+                    throw runtime_error("Invalid postfix expression: not enough operands");
                 }
                 const ll operand = operands.top();
                 operands.pop();
@@ -149,7 +145,7 @@ public:
         }
 
         if (operands.size() != 1) {
-            throw std::runtime_error("Invalid postfix expression: stack should contain exactly one result");
+            throw runtime_error("Invalid postfix expression: stack should contain exactly one result");
         }
 
         return operands.top();

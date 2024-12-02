@@ -17,7 +17,11 @@ public:
     };
 
     void clear() {
-        head = nullptr;
+        while (head != nullptr) {
+            const node<T> *temp = head;
+            head = head->get_next();
+            delete temp;
+        }
         curr_size_ = 0;
     }
 
@@ -37,7 +41,7 @@ public:
     }
 
     void push(const T &x) {
-        node<T> *new_node = new node<T>(std::move(x), head);
+        node<T> *new_node = new node<T>(x, head);
         head = new_node;
         curr_size_++;
     }

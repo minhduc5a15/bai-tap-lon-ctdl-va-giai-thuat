@@ -3,4 +3,7 @@ project(BTL)
 
 set(CMAKE_CXX_STANDARD 20)
 file(GLOB SRC "src/**/*.hpp")
-add_executable(BTL main.cpp ${SRC})
+add_executable(BTL main.cpp
+        src/B/node.hpp
+        src/B/stack.hpp
+)
